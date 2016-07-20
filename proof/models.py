@@ -5,7 +5,7 @@ class Proof(models.Model):
     title = models.TextField()
     given = models.TextField()
     prove = models.TextField()
-    diagram = models.FileField()
+    diagram = models.FileField(null=True)
     plan = models.TextField()
     statements = ArrayField(models.TextField())
     reasons = ArrayField(models.TextField())
