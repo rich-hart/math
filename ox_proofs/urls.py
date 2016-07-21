@@ -3,7 +3,8 @@ from django.contrib import admin
 
 from rest_framework import routers
 from api.views import (TheoremViewSet, 
-                    AxiomViewSet, 
+                    AxiomViewSet,
+                    AxiomHighlight, 
                     DefinitionViewSet,
                     UserViewSet,
                     GroupViewSet,
@@ -29,6 +30,7 @@ urlpatterns = [
     url('^$', schema_view),
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
+    url(r'^axioms/(?P<pk>[0-9]+)/highlight/$',AxiomHighlight.as_view(),name='axiom-highlight'),
     url(r'^theorems/(?P<pk>[0-9]+)/highlight/$',TheoremHighlight.as_view(),name='theorem-highlight'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

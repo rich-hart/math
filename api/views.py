@@ -10,13 +10,6 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import renderers
 
-class TheoremHighlight(generics.GenericAPIView):
-    queryset = Theorem.objects.all()
-    renderer_classes = (renderers.TemplateHTMLRenderer,)
-
-    def get(self, request, *args, **kwargs):
-        theorem = self.get_object()
-        return Response({'name': theorem.name },template_name="theorem.html")
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -37,9 +30,27 @@ class DefinitionViewSet(viewsets.ModelViewSet):
     queryset = Definition.objects.all()
     serializer_class = DefinitionSerializer
 
+class TheoremHighlight(generics.GenericAPIView):
+    queryset = Theorem.objects.all()
+    renderer_classes = (renderers.TemplateHTMLRenderer,)
+
+    def get(self, request, *args, **kwargs):
+        theorem = self.get_object()
+        return Response({'name': theorem.name },template_name="theorem.html")
+
+
 class TheoremViewSet(viewsets.ModelViewSet):
     queryset = Theorem.objects.all()
     serializer_class = TheoremSerializer
+
+class AxiomHighlight(generics.GenericAPIView):
+    queryset = Axiom.objects.all()
+    renderer_classes = (renderers.TemplateHTMLRenderer,)
+
+    def get(self, request, *args, **kwargs):
+        axiom= self.get_object()
+        return Response({'name': axiom.name },template_name="axiom.html")
+
 
 class AxiomViewSet(viewsets.ModelViewSet):
     queryset = Axiom.objects.all()

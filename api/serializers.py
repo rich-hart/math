@@ -25,10 +25,13 @@ class DefinitionSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class AxiomSerializer(serializers.HyperlinkedModelSerializer):
+    highlight = serializers.HyperlinkedIdentityField(view_name='axiom-highlight', format='html')
     class Meta:
         model = Axiom
         fields = ('id',
+                  'name',
                   'statement',
+                  'highlight',
                           )
 
 
