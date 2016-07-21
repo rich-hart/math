@@ -1,5 +1,14 @@
-from proof.models import Theorem, Axiom
+from proof.models import Theorem, Axiom, Definition
 from rest_framework import serializers
+
+class DefinitionSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Definition
+        fields = ('id',
+                  'name',
+                  'statement',
+                          )
+
 
 class AxiomSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
