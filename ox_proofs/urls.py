@@ -8,7 +8,8 @@ from api.views import (TheoremViewSet,
                     DefinitionViewSet,
                     UserViewSet,
                     GroupViewSet,
-                    TheoremHighlight)
+                    TheoremHighlight,
+                    DefinitionHighlight,)
 
 router = routers.DefaultRouter()
 router.register(r'users',UserViewSet)
@@ -30,6 +31,7 @@ urlpatterns = [
     url('^$', schema_view),
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
+    url(r'^definitionS/(?P<pk>[0-9]+)/highlight/$',DefinitionHighlight.as_view(),name='definition-highlight'),
     url(r'^axioms/(?P<pk>[0-9]+)/highlight/$',AxiomHighlight.as_view(),name='axiom-highlight'),
     url(r'^theorems/(?P<pk>[0-9]+)/highlight/$',TheoremHighlight.as_view(),name='theorem-highlight'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

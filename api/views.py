@@ -26,6 +26,15 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
+class DefinitionHighlight(generics.GenericAPIView):
+    queryset = Definition.objects.all()
+    renderer_classes = (renderers.TemplateHTMLRenderer,)
+
+    def get(self, request, *args, **kwargs):
+        definition = self.get_object()
+        return Response({'name': definition.name },template_name="definition.html")
+
+
 class DefinitionViewSet(viewsets.ModelViewSet):
     queryset = Definition.objects.all()
     serializer_class = DefinitionSerializer

@@ -16,11 +16,13 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class DefinitionSerializer(serializers.HyperlinkedModelSerializer):
+    highlight = serializers.HyperlinkedIdentityField(view_name='definition-highlight', format='html')
     class Meta:
         model = Definition
         fields = ('id',
                   'name',
                   'statement',
+                  'highlight',
                           )
 
 
