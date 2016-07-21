@@ -10,17 +10,17 @@ class TheoremAPITest(TestCase):
         self.user = AnonymousUser() 
 
     def test_post(self):
-        request = self.factory.get('/api/proofs/', format='json', follow=True)
+        request = self.factory.get('/api/theorems/', format='json', follow=True)
         request.user = self.user
         data = {   
-                   "title": "title",
+                   "name": "name",
                    "prove": "prove",
                    "given": "given",
                    "plan": "plan",
                    "statements": [],
                    "reasons": [],
                }
-        response = self.client.post('/api/proofs/',data, format='json', follow=True)
+        response = self.client.post('/api/theorems/',data, format='json', follow=True)
         self.assertEqual(response.status_code, 201)
         expected = data
         expected['id'] = 1

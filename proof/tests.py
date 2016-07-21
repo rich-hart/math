@@ -3,7 +3,7 @@ from .models import Theorem
 
 class TheoremTestCase(TestCase):
     def setUp(self):
-        Theorem.objects.create(title='title',
+        Theorem.objects.create(name='name',
                              prove='prove',
                              given='given',
                              diagram='test_image.jpeg',
