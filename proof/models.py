@@ -1,19 +1,18 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
 
-class Theorem(models.Model):
-    statement = models.TextField()
-    proof = models.ForeignKey('Proof')
 
 class Axiom(models.Model):
+    name = models.TextField()
     statement = models.TextField()
 
 class Definition(models.Model):
-    term = models.TextField()
+    name = models.TextField()
     statement = models.TextField()
 
-class Proof(models.Model):
-    title = models.TextField()
+class Theorem(models.Model):
+    name = models.TextField()
+    statement = models.TextField()
     given = models.TextField()
     prove = models.TextField()
     diagram = models.FileField(null=True)

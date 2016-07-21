@@ -1,4 +1,4 @@
-from proof.models import Proof, Axiom
+from proof.models import Theorem, Axiom
 from rest_framework import serializers
 
 class AxiomSerializer(serializers.HyperlinkedModelSerializer):
@@ -9,13 +9,13 @@ class AxiomSerializer(serializers.HyperlinkedModelSerializer):
                           )
 
 
-class ProofSerializer(serializers.HyperlinkedModelSerializer):
+class TheoremSerializer(serializers.HyperlinkedModelSerializer):
     statements = serializers.ListField(child=serializers.CharField())
     reasons = serializers.ListField(child=serializers.CharField())
     class Meta:
-        model = Proof
+        model = Theorem
         fields = ('id',
-                  'title',
+                  'name',
                   'prove', 
                   'given',
                   'diagram',

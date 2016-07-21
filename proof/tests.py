@@ -1,9 +1,9 @@
 from django.test import TestCase
-from .models import Proof
+from .models import Theorem
 
-class ProofTestCase(TestCase):
+class TheoremTestCase(TestCase):
     def setUp(self):
-        Proof.objects.create(title='title',
+        Theorem.objects.create(title='title',
                              prove='prove',
                              given='given',
                              diagram='test_image.jpeg',

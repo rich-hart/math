@@ -3,8 +3,8 @@ from django.test import TestCase
 from rest_framework.test import APIRequestFactory as RequestFactory
 import json
 
-from .views import ProofViewSet
-class ProofAPITest(TestCase):
+from .views import TheoremViewSet
+class TheoremAPITest(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
         self.user = AnonymousUser() 
