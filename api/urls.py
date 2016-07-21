@@ -1,9 +1,10 @@
 from django.conf.urls import url, include
 from rest_framework import routers
-from .views import ProofViewSet 
+from .views import ProofViewSet, AxiomViewSet 
 
 router = routers.DefaultRouter()
 router.register(r'proofs', ProofViewSet)
+router.register(r'axioms', AxiomViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
