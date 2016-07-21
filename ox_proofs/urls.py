@@ -6,7 +6,8 @@ from api.views import (TheoremViewSet,
                     AxiomViewSet, 
                     DefinitionViewSet,
                     UserViewSet,
-                    GroupViewSet)
+                    GroupViewSet,
+                    TheoremHighlight)
 
 router = routers.DefaultRouter()
 router.register(r'users',UserViewSet)
@@ -28,6 +29,7 @@ urlpatterns = [
     url('^$', schema_view),
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
+    url(r'^theorems/(?P<pk>[0-9]+)/highlight/$',TheoremHighlight.as_view(),name='theorem-highlight'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 

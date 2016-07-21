@@ -6,9 +6,17 @@ from .serializers import (TheoremSerializer,
                           DefinitionSerializer,
                           UserSerializer, 
                           GroupSerializer,)
+from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework import renderers
 
+class TheoremHighlight(generics.GenericAPIView):
+    queryset = Theorem.objects.all()
+    renderer_classes = (renderers.TemplateHTMLRenderer,)
 
-
+    def get(self, request, *args, **kwargs):
+        theorem = self.get_object()
+        return Response({'name': theorem.name },template_name="theorem.html")
 
 class UserViewSet(viewsets.ModelViewSet):
     """

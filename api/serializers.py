@@ -35,6 +35,7 @@ class AxiomSerializer(serializers.HyperlinkedModelSerializer):
 class TheoremSerializer(serializers.HyperlinkedModelSerializer):
     statements = serializers.ListField(child=serializers.CharField())
     reasons = serializers.ListField(child=serializers.CharField())
+    highlight = serializers.HyperlinkedIdentityField(view_name='theorem-highlight', format='html')
     class Meta:
         model = Theorem
         fields = ('id',
@@ -45,5 +46,6 @@ class TheoremSerializer(serializers.HyperlinkedModelSerializer):
                   'plan',        
                   'statements', 
                   'reasons',
+                  'highlight',
                           )
 
