@@ -1,7 +1,19 @@
-from proof.models import Theorem, Axiom, Definition
+from proof.models import Theorem, Axiom, Definition, Statement, Argument
 from rest_framework import serializers
 from django.contrib.auth.models import User, Group
 
+
+class StatementSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Statement
+        fields = ('name', 'statement', 'label','citation')
+
+
+class ArgumentSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Argument
+        fields = ('statement', 'given','prove','diagram',
+                  'note','paragraph','statements','reasons')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

@@ -74,7 +74,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ox_proofs.wsgi.application'
 
-
+import os
+MEDIA_ROOT = os.path.join(BASE_DIR,'data/media')
+MEDIA_URL =  os.path.join(BASE_DIR,'data/media/')  # Only for Dev
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
