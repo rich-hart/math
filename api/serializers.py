@@ -45,6 +45,7 @@ class TheoremSerializer(serializers.HyperlinkedModelSerializer):
         model = Theorem
         fields = ('id',
                   'name',
+                  'statement',
                   'prove', 
                   'given',
                   'diagram',
