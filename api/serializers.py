@@ -1,24 +1,28 @@
-from proof.models import Theorem, Axiom, Definition, Statement, Argument
+from proof.models import Theorem, Axiom, Definition, Statement, Argument, Book
 from rest_framework import serializers
 from django.contrib.auth.models import User, Group
 
+class BookSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Book
+        fields = ('axioms','definitions','theorems','citation','proofs','user')
 
 class StatementSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Statement
-        fields = ('name', 'statement', 'label','citation')
+        fields = ('name', 'statement', 'label','citation','user')
 
 
 class ArgumentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Argument
         fields = ('statement', 'given','prove','diagram',
-                  'note','paragraph','statements','reasons')
+                  'note','paragraph','statements','reasons','user')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('url', 'username', 'email', 'groups')
+        fields = ('id','url', 'username', 'email', 'groups')
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):

@@ -3,13 +3,29 @@ from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
 from django.conf import settings
 
+
+# Make a temp book model for file uploads.  Make
+# make staff only and not that this will be depricated.
+
+#class Citation(models.Model):
+#    bibtex
+
+class Book(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    definitions = models.FileField(upload_to=settings.MEDIA_ROOT)
+    axioms = models.FileField(upload_to=settings.MEDIA_ROOT)
+    theorems = models.FileField(upload_to=settings.MEDIA_ROOT)
+    proofs = models.FileField(upload_to=settings.MEDIA_ROOT,null=True)
+    citation = models.FileField(upload_to=settings.MEDIA_ROOT)
+
+
 class Statement(models.Model):
     LABEL_CHOICES = (
        ('DE', 'Definition'),
        ('AX', 'Axiom'),
-       ('LE', 'Lemma'),
+#       ('LE', 'Lemma'),
        ('TH', 'Theorem'),
-       ('CO', 'Corollary'),
+#       ('CO', 'Corollary'),
     )
     label = models.CharField(
         max_length=2,
@@ -19,8 +35,8 @@ class Statement(models.Model):
     )
     name = models.CharField(max_length=255)
     statement = models.CharField(max_length=255)
-    citation = models.CharField(max_length=255)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    citation = models.TextField(null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
 
 class Argument(models.Model):
     statement = models.ForeignKey(Statement)

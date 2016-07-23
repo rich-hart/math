@@ -1,19 +1,29 @@
-from proof.models import Theorem, Axiom, Definition, Statement, Argument
+from proof.models import Theorem, Axiom, Definition, Statement, Argument, Book
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from .serializers import (TheoremSerializer, 
-                          AxiomSerializer, 
-                          DefinitionSerializer,
-                          UserSerializer, 
-                          GroupSerializer,StatementSerializer,ArgumentSerializer)
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import renderers
 
+from .serializers import (
+                          TheoremSerializer, 
+                          AxiomSerializer, 
+                          DefinitionSerializer,
+                          UserSerializer, 
+                          GroupSerializer,
+                          StatementSerializer,
+                          ArgumentSerializer,
+                          BookSerializer,
+                  )
+
+class BookViewSet(viewsets.ModelViewSet):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
 
 class ArgumentViewSet(viewsets.ModelViewSet):
     queryset = Argument.objects.all()
     serializer_class = ArgumentSerializer
+
 class StatementViewSet(viewsets.ModelViewSet):
     queryset = Statement.objects.all()
     serializer_class = StatementSerializer

@@ -1,20 +1,13 @@
 from django.test import TestCase
 from .models import Theorem
 
-class TheoremTestCase(TestCase):
-    def setUp(self):
-        Theorem.objects.create(name='name',
-                             prove='prove',
-                             given='given',
-                             diagram='test_image.jpeg',
-                             plan='plan',
-                             statements=("statement_1","statement_2"),
-                             reasons=("reason_1","reason_2"))
+import yaml
 
-
-
-    def test_class_setup(self):
-        pass
-   
-
+from .utils import book_to_json
+class Utils(TestCase):
+    def test_book_to_json(self):
+        import ipdb; ipdb.set_trace()
+        returned = book_to_json('data/test/book/geometry/')
+        self.assertIsNone(returned) 
+    
 
