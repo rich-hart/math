@@ -1,0 +1,15 @@
+---
+- theorem: "symmetric property of congruent segments"
+  given: "line segment PQ is congruent to line segment XY"
+  prove: "line segment XY is congruent to line segment PQ"
+  statements: [ "line segment PQ is congruent to line segment XY",
+                "length of line segment PQ is equal to the length of line segment XY",
+                "length of line segment XY is equal to the length of line segment PQ",
+                "line segment XY is congruent to line segment PQ",
+  ]
+  reasons: [ "given",
+             "congruent segments",
+             "symmetric property of equality",
+             "congruent segments",
+  ]
+ 

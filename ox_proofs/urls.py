@@ -25,13 +25,9 @@ from django.conf import settings
 router = routers.DefaultRouter()
 
 router.register(r'users',UserViewSet)
-#router.register(r'groups',GroupViewSet)
 router.register(r'books', BookViewSet)
 router.register(r'arguments',ArgumentViewSet)
 router.register(r'statements',StatementViewSet)
-#router.register(r'definitionS', DefinitionViewSet)
-#router.register(r'theorems', TheoremViewSet)
-#router.register(r'axioms', AxiomViewSet)
 
 
 @api_view()
@@ -46,10 +42,6 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url('^$', schema_view),
     url(r'^api/', include(router.urls)),
-
-#    url(r'^definitionS/(?P<pk>[0-9]+)/highlight/$',DefinitionHighlight.as_view(),name='definition-highlight'),
-#    url(r'^axioms/(?P<pk>[0-9]+)/highlight/$',AxiomHighlight.as_view(),name='axiom-highlight'),
-#    url(r'^theorems/(?P<pk>[0-9]+)/highlight/$',TheoremHighlight.as_view(),name='theorem-highlight'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

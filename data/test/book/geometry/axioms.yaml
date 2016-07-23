@@ -1,0 +1,3 @@
+---
+- name: symmetric property of equality
+  statement: if line segment length AB is equal to line segment length CD then line segment length CD is equal to line segment length AB 

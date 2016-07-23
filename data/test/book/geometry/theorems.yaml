@@ -1,0 +1,4 @@
+---
+- name: symmetric property of congruent segments
+  statement: if line segment AB is equal to line segment CD then line segment CD is equal to line segment AB
+ 
