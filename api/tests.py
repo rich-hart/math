@@ -32,7 +32,6 @@ class Book(APITest):
         self.assertEqual(response.status_code,201)
 
     def test_teacher_post(self):
-        import ipdb; ipdb.set_trace()
         user = self.users['teacher']
         book = book_to_json('data/test/book/geometry')
 
